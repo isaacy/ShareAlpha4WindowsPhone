@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Facebook.Client" version="1.0" primary="true">
+		<Qualifiers>
+			<Language>EN, ES</Language>
+		</Qualifiers>
+		<ResourceMapSubtree name="Facebook.Client">
+			<ResourceMapSubtree name="Resources">
+				<ResourceMapSubtree name="LoginButton">
+					<NamedResource name="Caption_CloseSession" uri="ms-resource://Facebook.Client/Facebook.Client/Resources/LoginButton/Caption_CloseSession">
+						<Candidate qualifiers="Language-ES" type="String">
+							<Value>Cierra Sesión</Value>
+						</Candidate>
+						<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+							<Value>Log Out</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Caption_OpenSession" uri="ms-resource://Facebook.Client/Facebook.Client/Resources/LoginButton/Caption_OpenSession">
+						<Candidate qualifiers="Language-ES" type="String">
+							<Value>Inicia Sesión</Value>
+						</Candidate>
+						<Candidate qualifiers="Language-EN" isDefault="true" type="String">
+							<Value>Log In</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Facebook.Client">
+				<NamedResource name="Facebook.Client.xr.xml" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Facebook.Client.xr.xml">
+					<Candidate type="Path">
+						<Value>Facebook.Client\Facebook.Client.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="FacebookDialogPage.xbf" uri="ms-resource://Facebook.Client/Files/Facebook.Client/FacebookDialogPage.xbf">
+					<Candidate type="Path">
+						<Value>Facebook.Client\FacebookDialogPage.xbf</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Common">
+					<NamedResource name="StandardStyles.xbf" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Common/StandardStyles.xbf">
+						<Candidate type="Path">
+							<Value>Facebook.Client\Common\StandardStyles.xbf</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Controls">
+					<ResourceMapSubtree name="FriendPicker">
+						<NamedResource name="FriendPicker.xbf" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Controls/FriendPicker/FriendPicker.xbf">
+							<Candidate type="Path">
+								<Value>Facebook.Client\Controls\FriendPicker\FriendPicker.xbf</Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+					<ResourceMapSubtree name="LoginButton">
+						<NamedResource name="LoginButton.xbf" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Controls/LoginButton/LoginButton.xbf">
+							<Candidate type="Path">
+								<Value>Facebook.Client\Controls\LoginButton\LoginButton.xbf</Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+					<ResourceMapSubtree name="PlacePicker">
+						<NamedResource name="PlacePicker.xbf" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Controls/PlacePicker/PlacePicker.xbf">
+							<Candidate type="Path">
+								<Value>Facebook.Client\Controls\PlacePicker\PlacePicker.xbf</Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+					<ResourceMapSubtree name="ProfilePicture">
+						<NamedResource name="ProfilePicture.xbf" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Controls/ProfilePicture/ProfilePicture.xbf">
+							<Candidate type="Path">
+								<Value>Facebook.Client\Controls\ProfilePicture\ProfilePicture.xbf</Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+					<ResourceMapSubtree name="WebDialog">
+						<NamedResource name="Styles.xbf" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Controls/WebDialog/Styles.xbf">
+							<Candidate type="Path">
+								<Value>Facebook.Client\Controls\WebDialog\Styles.xbf</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="WebDialogUserControl.xbf" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Controls/WebDialog/WebDialogUserControl.xbf">
+							<Candidate type="Path">
+								<Value>Facebook.Client\Controls\WebDialog\WebDialogUserControl.xbf</Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Images">
+					<NamedResource name="fb_blank_place_profile_square.png" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Images/fb_blank_place_profile_square.png">
+						<Candidate type="Path">
+							<Value>Facebook.Client\Images\fb_blank_place_profile_square.png</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="fb_blank_profile_portrait.png" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Images/fb_blank_profile_portrait.png">
+						<Candidate type="Path">
+							<Value>Facebook.Client\Images\fb_blank_profile_portrait.png</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="fb_blank_profile_square.png" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Images/fb_blank_profile_square.png">
+						<Candidate type="Path">
+							<Value>Facebook.Client\Images\fb_blank_profile_square.png</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xbf" uri="ms-resource://Facebook.Client/Files/Facebook.Client/Themes/Generic.xbf">
+						<Candidate type="Path">
+							<Value>Facebook.Client\Themes\Generic.xbf</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>
