@@ -169,7 +169,7 @@ namespace ShareAlpha
             {
                 message = "Share Alpha",
                 source = mediaObject,
-                no_story = true,
+                //no_story = true,
             };
 
             try
