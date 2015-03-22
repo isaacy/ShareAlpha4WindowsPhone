@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Facebook.Client;
+using ShareAlpha.DataModel;
+
 
 // The Pivot Application template is documented at http://go.microsoft.com/fwlink/?LinkID=391641
 
@@ -31,8 +33,14 @@ namespace ShareAlpha
         private TransitionCollection transitions;
         public ContinuationManager ContinuationManager { get; private set; }
 
+        public static Invitation Invitation { get; private set; }
+
+
+
 #if WINDOWS_PHONE_APP
+
         ContinuationManager continuationManager;
+
 #endif
 
         /// <summary>
@@ -47,6 +55,9 @@ namespace ShareAlpha
             Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 #endif
 
+            // model 
+            Invitation = new Invitation();
+            Invitation.Date = DateTimeOffset.Now;
 
         }
 
@@ -135,7 +146,7 @@ namespace ShareAlpha
             {
                 LifecycleHelper.FacebookAuthenticationReceived(e as ProtocolActivatedEventArgs);
 
-               
+
             }
 
             else if (e is IContinuationActivatedEventArgs)

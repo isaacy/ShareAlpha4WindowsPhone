@@ -113,8 +113,8 @@
 
 
             <Grid>
-                <ScrollViewer x:Name="inviteScrollArea"  VerticalScrollBarVisibility="Hidden" Visibility="Visible">
-                    <Grid>
+                <ScrollViewer x:Name="inviteScrollArea"  VerticalScrollBarVisibility="Hidden" Visibility="Visible" FontFamily="Global User Interface">
+                    <Grid x:Name="inviteGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
@@ -122,7 +122,7 @@
                         <Border BorderThickness="1" Grid.Row="0" BorderBrush="White" Margin="24, 24, 24, 0">
                             <Image x:Name="shareImage"  Visibility="Visible" />
                         </Border>
-                        <StackPanel x:Name="inviteTextPanel" Background="White" Grid.Row="1" Visibility="Collapsed" Margin="24, 0, 24, 24">
+                        <StackPanel x:Name="inviteTextPanel" Background="White" Grid.Row="1" Margin="24, 0, 24, 24">
                             <TextBlock x:Name="alphaNameTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Black" Foreground="Black"  Margin="16,4" Text="{Binding AlphaName}"/>
                             <TextBlock x:Name="locationTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Black" Foreground="Gray" Margin="16,4" Text="{Binding Location}"/>
 
@@ -144,7 +144,7 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Margin="24, 12, 24, 12" TextWrapping="Wrap" FontFamily="Arial Black" FontSize="16" FontWeight ="Bold" HorizontalAlignment="Center" TextAlignment="Center">
-							<Run Text="Turn your photo ino a customer inviation for you Alpha by filling out the fields below"/>
+							<Run Text="Turn your photo into a custom invitation for your Alpha by filling out the fields below."/>
                         </TextBlock>
                         <TextBox x:Name="alphaNameTextBox" Grid.Row="1" BorderBrush="Gray" BorderThickness="2" Margin="16,8" Padding="8" FontFamily="SimHei"  FontSize="24" TextWrapping="Wrap" PlaceholderText="Your Alpha Name" VerticalAlignment="Stretch" Background="{ThemeResource PhoneBackgroundBrush}" Foreground="{ThemeResource PhoneForegroundBrush}" Style="{StaticResource TextBoxStyle1}" Text="{Binding AlphaName, Mode=TwoWay}">
                         </TextBox>
@@ -164,7 +164,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="shareButton" Grid.Column="0" FontSize="20" FontWeight="Light" Background="#FFD30707" BorderThickness="0" Padding="0, 0" HorizontalAlignment="Stretch" FontFamily="Calibri" Content="Share">
+                <Button x:Name="shareButton" Grid.Column="0" FontSize="24" FontWeight="Light" Background="#FFD30707" BorderThickness="0" Padding="0, 0" HorizontalAlignment="Stretch" FontFamily="Calibri" Content="Share">
                     <Button.Flyout>
                         <Flyout>
                             <Grid RequestedTheme="Dark">
@@ -200,7 +200,7 @@
                         </Flyout>
                     </Button.Flyout>
                 </Button>
-                <Button x:Name="CreateInvite" Grid.Column="1" FontFamily="Calibri" FontSize="20" FontWeight="Light" Background="#FFD30707" BorderThickness="0" Padding="0, 0" Margin="24,0,0,0"  HorizontalAlignment="Stretch" Content="Create Invite" Click="CreateInvite_Click"  />
+                <Button x:Name="CreateInvite" Grid.Column="1" FontFamily="Calibri" FontSize="24" FontWeight="Light" Background="#FFD30707" BorderThickness="0" Padding="0, 0" Margin="24,0,0,0"  HorizontalAlignment="Stretch" Content="Create Invite" Click="CreateInvite_Click"  />
 
             </Grid>
             <Grid x:Name="inviteEditButtonsGrid" Margin="24,0" Visibility="Collapsed">
@@ -208,8 +208,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="cancelButton" Grid.Column="0" FontFamily="Calibri" FontSize="20" FontWeight="Light" Background="#FFD30707" BorderThickness="0" Padding="0, 0" Margin="0,0,12,0" HorizontalAlignment="Stretch" Content="Cancel" Click="cancelButton_Click" />
-                <Button x:Name="CreateButton" Grid.Column="1" FontFamily="Calibri" FontSize="20" FontWeight="Light" Background="#FFD30707" BorderThickness="0" Padding="0, 0" Margin="12,0,0,0" HorizontalAlignment="Stretch" Content="Create" Click="CreateButton_Click" />
+                <Button x:Name="cancelButton" Grid.Column="0" FontFamily="Calibri" FontSize="24" FontWeight="Light" Background="#FFD30707" BorderThickness="0" Padding="0, 0" Margin="0,0,12,0" HorizontalAlignment="Stretch" Content="Cancel" Click="cancelButton_Click" />
+                <Button x:Name="CreateButton" Grid.Column="1" FontFamily="Calibri" FontSize="24" FontWeight="Light" Background="#FFD30707" BorderThickness="0" Padding="0, 0" Margin="12,0,0,0" HorizontalAlignment="Stretch" Content="Create" Click="CreateButton_Click" />
             </Grid>
 
         </Grid>

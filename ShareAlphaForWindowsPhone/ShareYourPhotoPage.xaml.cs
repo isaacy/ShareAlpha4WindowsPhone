@@ -35,7 +35,6 @@ namespace ShareAlpha
     /// </summary>
     public sealed partial class ShareYourPhotoPage : Page
     {
-        private Invitation invitation = new Invitation();
         public ShareYourPhotoPage()
         {
             this.InitializeComponent();
@@ -47,18 +46,19 @@ namespace ShareAlpha
             };
 
             this.shareImage.Source = ArrangePicturePage.ArrangedImage;
-            this.alphaNameTextBox.DataContext = invitation;
-            this.locationTextBox.DataContext = invitation;
-            this.dateTextBlock.DataContext = invitation;
-            this.shortMessageTextBox.DataContext = invitation;
+            this.alphaNameTextBox.DataContext = App.Invitation;
+            this.locationTextBox.DataContext = App.Invitation;
+            this.dateTextBlock.DataContext = App.Invitation;
+            this.shortMessageTextBox.DataContext = App.Invitation;
 
             this.shareImage.Source = ArrangePicturePage.ArrangedImage;
-            this.alphaNameTextBlock.DataContext = invitation;
-            this.locationTextBlock.DataContext = invitation;
-            this.alphaDateTimePicker.DataContext = invitation;
-            this.shortMessageTextBlock.DataContext = invitation;
+            this.alphaNameTextBlock.DataContext = App.Invitation;
+            this.locationTextBlock.DataContext = App.Invitation;
+            this.alphaDateTimePicker.DataContext = App.Invitation;
+            this.shortMessageTextBlock.DataContext = App.Invitation;
 
-            invitation.Date = DateTimeOffset.Now;
+            this.inviteTextPanel.Visibility = string.IsNullOrEmpty(App.Invitation.AlphaName) ? Windows.UI.Xaml.Visibility.Collapsed: Windows.UI.Xaml.Visibility.Visible;
+
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace ShareAlpha
         /// This parameter is typically used to configure the page.</param>
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.NavigationMode == NavigationMode.Refresh)
+            if (e.NavigationMode == NavigationMode.New)
             {
                 if (e.Parameter is StorageFile)
                 {
@@ -76,17 +76,8 @@ namespace ShareAlpha
 
                     using (var stream = await file.OpenAsync(FileAccessMode.ReadWrite))
                     {
-                        byte[] bytes = await GetInviteBitmapAsync();
 
-                        BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
-
-                        encoder.SetPixelData(BitmapPixelFormat.Bgra8,
-                            BitmapAlphaMode.Ignore,
-                            (uint)ArrangePicturePage.ArrangedImage.PixelWidth,
-                            (uint)ArrangePicturePage.ArrangedImage.PixelHeight,
-                            96.0, 96.0, bytes);
-
-                        await encoder.FlushAsync();
+                        await SaveScreenshotToStream(inviteGrid, stream);
                     }
 
                     ContentDialog fileSavedDialog = new ContentDialog()
@@ -99,6 +90,26 @@ namespace ShareAlpha
 
                 }
             }
+        }
+
+
+        private async System.Threading.Tasks.Task SaveScreenshotToStream(UIElement targetScrenshotElement,  IRandomAccessStream stream)
+        {
+            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap();
+            await renderTargetBitmap.RenderAsync(targetScrenshotElement);
+
+            var pixels = await renderTargetBitmap.GetPixelsAsync();
+            byte[] bytes = pixels.ToArray();
+
+            BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
+
+            encoder.SetPixelData(BitmapPixelFormat.Bgra8,
+                BitmapAlphaMode.Ignore,
+                (uint)renderTargetBitmap.PixelWidth,
+                (uint)renderTargetBitmap.PixelHeight,
+                96.0, 96.0, bytes);
+
+            await encoder.FlushAsync();
         }
 
         private async void shareFacebook_Click(object sender, RoutedEventArgs e)
@@ -138,17 +149,7 @@ namespace ShareAlpha
 
             using (IRandomAccessStream stream = new InMemoryRandomAccessStream())
             {
-                byte[] bytes = await GetInviteBitmapAsync();
-
-                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
-
-                encoder.SetPixelData(BitmapPixelFormat.Bgra8,
-                    BitmapAlphaMode.Ignore,
-                    (uint)ArrangePicturePage.ArrangedImage.PixelWidth,
-                    (uint)ArrangePicturePage.ArrangedImage.PixelHeight,
-                    96.0, 96.0, bytes);
-
-                await encoder.FlushAsync();
+                await SaveScreenshotToStream(inviteGrid, stream);
 
                 resultingBuffer = new byte[stream.Size];
 
@@ -201,23 +202,14 @@ namespace ShareAlpha
             }
         }
 
-        private async System.Threading.Tasks.Task<byte[]> GetInviteBitmapAsync()
-        {
-            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap();
-            await renderTargetBitmap.RenderAsync(inviteScrollArea);
-
-            var pixels = await ArrangePicturePage.ArrangedImage.GetPixelsAsync();
-            byte[] bytes = pixels.ToArray();
-            return bytes;
-        }
 
         private void savePosterButton_Click(object sender, RoutedEventArgs e)
         {
             FileSavePicker savePicker = new FileSavePicker();
             savePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("JPEG image", new List<string>() { ".jpg" });
-            savePicker.DefaultFileExtension = "jpg";
+            savePicker.FileTypeChoices.Add("PNG image", new List<string>() { ".png" });
+            savePicker.DefaultFileExtension = "png";
             savePicker.SuggestedFileName = "Share Alpha";
 
             savePicker.PickSaveFileAndContinue();
@@ -236,14 +228,14 @@ namespace ShareAlpha
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            invitation.Clear();
+            App.Invitation.Clear();
             SwitchToShareView();
         }
 
         private void SwitchToShareView()
         {
             inviteScrollArea.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            inviteTextPanel.Visibility = invitation.AlphaName == string.Empty ? Windows.UI.Xaml.Visibility.Collapsed : Windows.UI.Xaml.Visibility.Visible;
+            inviteTextPanel.Visibility = string.IsNullOrEmpty(App.Invitation.AlphaName) ? Windows.UI.Xaml.Visibility.Collapsed : Windows.UI.Xaml.Visibility.Visible;
             shareButtonsGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
             editGridBorder.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
@@ -274,17 +266,7 @@ namespace ShareAlpha
 
             IRandomAccessStream stream = new InMemoryRandomAccessStream();
 
-            byte[] bytes = await GetInviteBitmapAsync();
-
-            BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
-
-            encoder.SetPixelData(BitmapPixelFormat.Bgra8,
-                BitmapAlphaMode.Ignore,
-                (uint)ArrangePicturePage.ArrangedImage.PixelWidth,
-                (uint)ArrangePicturePage.ArrangedImage.PixelHeight,
-                96.0, 96.0, bytes);
-
-            await encoder.FlushAsync();
+            await SaveScreenshotToStream(inviteGrid, stream);
 
             var streamReference = RandomAccessStreamReference.CreateFromStream(stream);
 
