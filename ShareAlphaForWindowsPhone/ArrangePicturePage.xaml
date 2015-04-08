@@ -17,8 +17,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
@@ -26,23 +26,36 @@
                 Arrange Your Picture
             </TextBlock>
         </StackPanel>
-        <Grid Grid.Row="1" Margin="8">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="whiteButton" Grid.Column="0" HorizontalAlignment="Stretch" Padding="0" BorderThickness="0" Background="White" Click="whiteButton_Click"/>
-            <Button x:Name="blackButton" Grid.Column="1" HorizontalAlignment="Stretch" Padding="0,0,0,0" Background="Black" Click="blackButton_Click"/>
-        </Grid>
-        <Grid Grid.Row="2">
+        
+        <Grid Grid.Row="1">
             <Canvas x:Name="arrangePictureCanvas" AllowDrop="True" Margin="24">
                 <Canvas.Background>
                     <ImageBrush x:Name="arrangePictureImageBrush" Stretch="Fill"/>
                 </Canvas.Background>
-                <Image Canvas.Left="50" Canvas.Top="50" Height="148" Width="140" Source="Assets/Alpha/alpha-oranget-transparent.png" Stretch="UniformToFill" PointerMoved="Image_PointerMoved" PointerPressed="Image_PointerPressed" PointerReleased="Image_PointerReleased" PointerCaptureLost="Image_PointerCaptureLost" PointerCanceled="Image_PointerCanceled">
+                <Image x:Name="questionMarkImage" Canvas.Left="50" Canvas.Top="50" Height="148" Width="140" Source="Assets/Alpha/alpha-oranget-transparent.png" Stretch="UniformToFill" PointerMoved="Image_PointerMoved" PointerPressed="Image_PointerPressed" PointerReleased="Image_PointerReleased" PointerCaptureLost="Image_PointerCaptureLost" PointerCanceled="Image_PointerCanceled">
                     
                 </Image>
             </Canvas>
+        </Grid>
+        <Grid Grid.Row="2" Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="whiteButton" Grid.Column="0" HorizontalAlignment="Stretch"  BorderThickness="0" Margin="4,4,0,4" Background="White" Click="whiteButton_Click" MinWidth="0"/>
+            <Button x:Name="blackButton" Grid.Column="1" HorizontalAlignment="Stretch"  Background="Black" Margin="0,4,4,4" Click="blackButton_Click" HorizontalContentAlignment="Stretch"  MinWidth="0" />
+            <Button x:Name="orangeQuestionMarkButton" Grid.Column="2" HorizontalAlignment="Stretch"  BorderThickness="0" MinWidth="0" Click="Button_Click"  >
+                <Image x:Name="orangeQuestionMarkImage"  Source="Assets/Alpha/alpha-oranget-transparent.png" Height="40" Width="40" Stretch="UniformToFill"/>
+            </Button>
+            <Button x:Name="pinkQuestionMarkButton" Grid.Column="3" HorizontalAlignment="Stretch" BorderThickness="0" Background="Black" MinWidth="0" Click="pinkQuestionMarkButton_Click" >
+                <Image x:Name="pinkQuestionMarkImage" Source="Assets/Alpha/alpha-pink-transparent.png" Height="40" Width="40" Stretch="UniformToFill"/>
+            </Button>
+            <Button x:Name="redQuestionMarkButton" Grid.Column="4" HorizontalAlignment="Stretch" BorderThickness="0" Background="Black" MinWidth="0" Click="redQuestionMarkButton_Click" >
+                <Image x:Name="redQuestionMarkImage" Source="Assets/Alpha/alpha-red-transparent.png" Height="45" Width="45" Stretch="UniformToFill"/>
+            </Button>
         </Grid>
     </Grid>
 </Page>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="56371IsaacyCorp.ShareAlpha" Publisher="CN=01A9BB64-892E-466A-81FF-DB48A3078B45" Version="1.1.0.5" />
+  <Identity Name="56371IsaacyCorp.ShareAlpha" Publisher="CN=01A9BB64-892E-466A-81FF-DB48A3078B45" Version="1.1.0.6" />
   <mp:PhoneIdentity PhoneProductId="690a0f35-3f39-4901-ad1a-ef39123e03c8" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Share Alpha</DisplayName>

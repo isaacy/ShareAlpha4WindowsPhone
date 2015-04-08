@@ -222,5 +222,20 @@ namespace ShareAlpha
         {
             ClearTargetSender();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            questionMarkImage.Source = orangeQuestionMarkImage.Source;
+        }
+
+        private void redQuestionMarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            questionMarkImage.Source = redQuestionMarkImage.Source;
+        }
+
+        private void pinkQuestionMarkButton_Click(object sender, RoutedEventArgs e)
+        {
+            questionMarkImage.Source = pinkQuestionMarkImage.Source;
+        }
     }
 }
