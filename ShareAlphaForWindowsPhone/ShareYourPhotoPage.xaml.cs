@@ -49,16 +49,17 @@ namespace ShareAlpha
             this.alphaNameTextBox.DataContext = App.Invitation;
             this.locationTextBox.DataContext = App.Invitation;
             this.dateTextBlock.DataContext = App.Invitation;
+            this.timeTextBlock.DataContext = App.Invitation;
             this.shortMessageTextBox.DataContext = App.Invitation;
 
             this.shareImage.Source = ArrangePicturePage.ArrangedImage;
             this.alphaNameTextBlock.DataContext = App.Invitation;
             this.locationTextBlock.DataContext = App.Invitation;
-            this.alphaDateTimePicker.DataContext = App.Invitation;
+            this.alphaDatePicker.DataContext = App.Invitation;
+            this.alphaTimePicker.DataContext = App.Invitation;
             this.shortMessageTextBlock.DataContext = App.Invitation;
 
             this.inviteTextPanel.Visibility = string.IsNullOrEmpty(App.Invitation.AlphaName) ? Windows.UI.Xaml.Visibility.Collapsed: Windows.UI.Xaml.Visibility.Visible;
-
         }
 
         /// <summary>

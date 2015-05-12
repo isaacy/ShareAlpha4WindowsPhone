@@ -111,7 +111,6 @@
         </StackPanel>
         <Grid x:Name="backgroundGrid"  Grid.Row="1">
 
-
             <Grid>
                 <ScrollViewer x:Name="inviteScrollArea"  VerticalScrollBarVisibility="Hidden" Visibility="Visible" FontFamily="Global User Interface">
                     <Grid x:Name="inviteGrid">
@@ -123,11 +122,13 @@
                             <Image x:Name="shareImage"  Visibility="Visible" />
                         </Border>
                         <StackPanel x:Name="inviteTextPanel" Background="White" Grid.Row="1" Margin="24, 0, 24, 24">
-                            <TextBlock x:Name="alphaNameTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Black" Foreground="Black"  Margin="16,4" Text="{Binding AlphaName}"/>
-                            <TextBlock x:Name="locationTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Black" Foreground="Gray" Margin="16,4" Text="{Binding Location}"/>
-
-                            <TextBlock x:Name="dateTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Black" Foreground="Gray" Margin="16,4" Text="{Binding Date, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:dd-MM-yyyy\}}" />
-                            <TextBlock x:Name="shortMessageTextBlock" FontSize="16" FontFamily="Segoe UI Light" FontWeight="Light" Foreground="Black" Margin="16,4" TextWrapping="Wrap" Text="{Binding Message}" />
+                            <TextBlock x:Name="alphaNameTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Black" Foreground="Black"  Margin="16,4,16,2" Text="{Binding AlphaName}"/>
+                            <TextBlock x:Name="locationTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Black" Foreground="Gray" Margin="16,2" Text="{Binding Location}"/>
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock x:Name="dateTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Black" Foreground="Gray" Margin="16,2,8,2" Text="{Binding Date, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:MMM dd yyyy\}}" />
+                                <TextBlock x:Name="timeTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Black" Foreground="Gray" Margin="8,2,16,2" Text="{Binding Time, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:hh\\:mm\}}" />
+                            </StackPanel>
+                            <TextBlock x:Name="shortMessageTextBlock" FontSize="16" FontFamily="Arial Black" FontWeight="Light" Foreground="Black" Margin="16,4" TextWrapping="Wrap" Text="{Binding Message}" />
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>
@@ -150,7 +151,14 @@
                         </TextBox>
                         <TextBox x:Name="locationTextBox" Grid.Row="2" BorderBrush="Gray" BorderThickness="2" Margin="16,8" Padding="8" FontFamily="SimHei"  FontSize="24" TextWrapping="Wrap" PlaceholderText="Location" VerticalAlignment="Stretch" Background="{ThemeResource PhoneBackgroundBrush}" Foreground="{ThemeResource PhoneForegroundBrush}" Style="{StaticResource TextBoxStyle1}" Text="{Binding Location, Mode=TwoWay}">
                         </TextBox>
-                        <DatePicker x:Name="alphaDateTimePicker" Grid.Row="3" BorderBrush="Gray" BorderThickness="1" Margin="12,2" Padding="4"  Date="{Binding Date, Mode=TwoWay}"/>
+                        <Grid Grid.Row="3" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <DatePicker x:Name="alphaDatePicker" Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Margin="12,2,4,2" Padding="4"  Date="{Binding Date, Mode=TwoWay}"/>
+                            <TimePicker x:Name="alphaTimePicker" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Margin="4,2,12,2" Padding="4"  Time="{Binding Time, Mode=TwoWay}"/>
+                        </Grid>
                         <TextBox x:Name="shortMessageTextBox" Grid.Row="4" BorderBrush="Gray" BorderThickness="2" Margin="16,8" Padding="8" FontFamily="SimHei" FontSize="20" TextWrapping="Wrap" PlaceholderText="Short Message" VerticalAlignment="Stretch" Background="{ThemeResource PhoneBackgroundBrush}" Foreground="{ThemeResource PhoneForegroundBrush}" Style="{StaticResource TextBoxStyle1}" AcceptsReturn="True"  Text="{Binding Message, Mode=TwoWay}" />
                     </Grid>
                 </Border>

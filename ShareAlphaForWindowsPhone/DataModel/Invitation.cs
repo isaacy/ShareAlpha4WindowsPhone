@@ -47,10 +47,19 @@ namespace ShareAlpha.DataModel
             set { date = value; NotifyPropertyChanged("Date"); }
         }
 
+        private TimeSpan time;
+
+        public TimeSpan Time
+        {
+            get { return time; }
+            set { time = value; NotifyPropertyChanged("Time"); }
+        }
+
         public void Clear()
         {
             message = string.Empty;
             date = DateTimeOffset.MinValue;
+            time = TimeSpan.Zero;
             location = string.Empty;
             alphaName = string.Empty;
         }
